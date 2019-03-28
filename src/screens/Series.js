@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  KeyboardAvoidingView,
+  FlatList,
   Text,
   View,
   Image,
-  TextInput
+  TextInput,
+  Dimensions,
 } from 'react-native';
 
 import HeaderBar from '../components/HeaderBar'
+import SerieItem from '../components/SerieItem'
 
-const logo = require('../images/marvel-logo.png')
+const mock = require('../mocks/series')
+const response = mock.data
+const series = response.results
 
 export default class Series extends Component {
 
@@ -21,19 +25,19 @@ export default class Series extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior='padding'>
-        <View>
-          <HeaderBar />
-        </View>
-        <Image 
-          source={logo}
-          style={styles.logo} />
-      </KeyboardAvoidingView>
+      <View style={styles.container}>
+        <FlatList
+          data={series}
+          keyExtractor={serie => serie.title}
+          renderItem={({ item }) => <SerieItem
+          data={item}
+        />} />
+      </View>
     )
   }
 }
+
+const fullwidth = Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
@@ -42,7 +46,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000',
   },
-  logo: {
-    marginTop: 100
-  }
 });

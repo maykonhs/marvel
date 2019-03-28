@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export default class CharacterItem extends Component {
+export default class CreatorItem extends Component {
   render() {
     const { data } = this.props
     return (
@@ -35,7 +35,7 @@ const fullwidth = Dimensions.get('window').width
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     backgroundColor: '#000',
     padding: 2,
   },
@@ -43,8 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'transparent',
-    paddingLeft: 10,
-    paddingTop: 40
+    padding: 20
   },
   characterImage: {
     width: '100%',
@@ -59,17 +58,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     color: '#FFF',
     fontSize: 20,
-    textShadowColor:'#000',
-    textShadowOffset:{width: 2, height: 2},
-    textShadowRadius:10,
   },
   descriptionText: {
     fontFamily: 'Comic Book',
     backgroundColor: 'transparent',
     color: '#FFF',
     fontSize: 15,
-    textShadowColor:'#000',
-    textShadowOffset:{width: 2, height: 2},
-    textShadowRadius:10,
   },
 });
